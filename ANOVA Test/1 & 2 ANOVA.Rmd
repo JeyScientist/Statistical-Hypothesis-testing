@@ -1,0 +1,31 @@
+---
+title: "1&2 ANOVA"
+output:
+  html_document:
+    df_print: paged
+date: "2024-02-13"
+---
+Two way ANOVA: Effect of two independent variables on a dependent variable i.e -
+-effect of gender and marital_status on smoking(smoker)
+-no/significant effect of gender on smoker
+-no/significant effect of marital_status on smoker
+-no/significant effect of gender and marital_status simultanously
+---
+```{r}
+df <- read.csv("ANO.csv")
+attach(df)
+
+```
+```{r}
+anv <- aov(smoker~gender)
+summary(anv)
+```
+```{r}
+av <- aov(smoker~mariral_status)
+summary(av)
+```
+```{r}
+av2 <- aov(smoker~mariral_status+gender+mariral_status:gender: smoker)
+summary(av2)
+```
+One/Two way ANOVA, has almost similer steps though 2way ANOVA combines the independent variables, but on either rejecting the H0, we use p-value, if < 0.05 accept H1.like in the example above.
