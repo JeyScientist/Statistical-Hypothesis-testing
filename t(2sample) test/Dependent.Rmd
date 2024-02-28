@@ -1,0 +1,40 @@
+---
+title: "t Test(3)"
+output: word_document
+date: "2024-02-18"
+---
+null hypothesis: population means are qual.
+alternative hypothesis: ppn is unequal
+           alpha=.05
+```{r}
+df <- read.csv("Advertise.csv")
+summary(df)
+```
+
+
+```{r}
+shapiro.test(df$Radio)
+```
+ dataset is not normally distributed
+
+
+
+```{r}
+shapiro.test(df$Newspaper)
+```
+ dataset is not normally distributed
+```{r}
+var.test(df$Newspaper, df$Radio)
+```
+
+```{r}
+t.test(df$Newspaper, df$Radio,
+       alternative = "two.sided",
+       paired=TRUE)
+```
+We accept the H1: that ppn means are unequal.
+t=3.5747 means that newspaper results are higher than that of radio.
+
+```{r}
+cor(df$Newspaper, df$Radio)
+```
