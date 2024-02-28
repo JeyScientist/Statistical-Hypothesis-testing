@@ -1,0 +1,38 @@
+---
+title: "Untitled"
+output: word_document
+date: "2024-02-08"
+---
+In a volunteer group, adults 21 and older volunteer from one to nine hours each week to
+spend time with a disabled senior citizens.
+The program recruits among community college students, 
+four-year college student and nonstudents. In table below,
+is a sample of the adult volunteers and the number of hours they volunteer per week.
+Is the number of hours volunteered independent of the type of volunteer?
+      Type of Volunteer         	1-3 Hours	4-6 Hours	7-9 Hours	Row Total
+      Community College Students	111	      96      	      48	      255
+      Four-Year-College         	96	      133	            61	      290
+      Nonstudents	                91       	150	            53        294
+      Column Total	             298       	379	            162       839
+      
+      
+Null Hypothesis is: the number of hours volunteered is ndependent of the type of voluntee
+Alternative Hypothesis: the number of hours volunteered is independent of the type of volunteer"
+
+```{r}
+volunteer <- matrix(c(111,96,48,96,133,61,91,150,53), byrow=T, nrow=3)
+volunteer
+rownames(volunteer) <- c("community", "Forth yr", "Non studentd")
+colnames(volunteer) <- c("1-3 hrs", "4-6 hrs", "7-9 hrs")
+volunteer
+
+model <- chisq.test(volunteer)
+model
+model$expected
+
+model$residuals
+
+vol_tab <- as.table(volunteer)
+```
+Since p value 0.01132 < 0.005/5% we reject the null hypothesis, and conclude thatthe number of hours volunteered is ndependent of the type of volunteer.
+
