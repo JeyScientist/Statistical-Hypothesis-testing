@@ -1,0 +1,31 @@
+---
+title: "t test(1s)"
+output: word_document
+date: "2024-02-19"
+---
+
+```{r}
+df <- read.csv("Advertise.csv")
+summary(df)
+```
+
+
+
+
+```{r}
+boxplot(df$TV)
+      
+```
+No outliers.
+H0: mean=30
+H1: mean <>30
+   alpha=.05
+```{r}
+t.test(df$TV,  mu=30, alternative ="two.sided", conf=0.95)
+```
+```{r}
+t.test(df$TV,  mu=30, alternative ="less", conf=0.95)
+```
+
+
+
